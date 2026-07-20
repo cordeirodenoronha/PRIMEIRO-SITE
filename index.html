@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AURA — Caneta Premium</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    :root {
+      --bg-body: #FFFFFF;
+      --bg-gradient-top: #FAFBFC;
+      --bg-gradient-mid: #F4F7FB;
+      --bg-gradient-bot: #EEF2F8;
+      --text-main: #1D1D1F;
+      --text-secondary: #86868B;
+      --text-tertiary: #A3A3A3;
+      --border-light: #D2D2D7;
+      --border-subtle: #E5E5E7;
+      --primary: #1D1D1F;
+      --primary-fg: #FFFFFF;
+      --accent-blue: #0071E3;
+    }
+
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: auto;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img,
+    video {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1.25rem 2.5rem;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(210, 210, 215, 0.3);
+      will-change: transform;
+    }
+
+    .header-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .header-logo .logo-icon {
+      width: 2rem;
+      height: 2rem;
+      background: var(--primary);
+      color: var(--primary-fg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 700;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .header-logo:hover .logo-icon {
+      transform: rotate(90deg);
+    }
+
+    .header-logo span {
+      font-weight: 600;
+      font-size: 1.125rem;
+      letter-spacing: -0.03em;
+    }
+
+    .header-logo .logo-light {
+      color: var(--text-tertiary);
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+    }
+
+    .header-nav a {
+      font-size: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-secondary);
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .header-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--primary);
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .header-nav a:hover {
+      color: var(--primary);
+    }
+
+    .header-nav a:hover::after {
+      width: 100%;
+    }
+
+    .header-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      border: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: border-color 0.3s, background 0.3s;
+      background: transparent;
+    }
+
+    .header-icon:hover {
+      border-color: var(--primary);
+      background: var(--bg-body);
+    }
+
+    .header-icon svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      color: var(--text-main);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text-main);
+      border-radius: 2px;
+      transition: transform 0.3s;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+      padding: 6rem 2.5rem 3rem;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background: linear-gradient(
+        180deg,
+        var(--bg-gradient-top) 0%,
+        var(--bg-gradient-mid) 50%,
+        var(--bg-gradient-bot) 100%
+      );
+    }
+
+    .hero-layout {
+      position: relative;
+      z-index: 1;
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 5rem;
+      width: 100%;
+      flex: 1;
+    }
+
+    .hero-left {
+      flex: 0 0 auto;
+      max-width: 420px;
+      padding-bottom: 2rem;
+    }
+
+    .hero-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      color: var(--text-tertiary);
+      letter-spacing: 0.25em;
+      display: block;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title {
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title .line-solid {
+      display: block;
+      font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+      font-weight: 600;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--text-main);
+    }
+
+    .hero-title .line-stroke {
+      display: block;
+      font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+      font-weight: 600;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(29, 29, 31, 0.2);
+    }
+
+    .hero-text {
+      font-size: 1.0625rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      max-width: 400px;
+      margin-bottom: 2.5rem;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.875rem 1.75rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        background 0.3s, color 0.3s;
+      will-change: transform;
+      overflow: hidden;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--primary-fg);
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .btn-primary:active {
+      transform: scale(0.98);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text-main);
+      border: 1px solid var(--border-light);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--text-main);
+      background: rgba(0, 0, 0, 0.02);
+      transform: scale(1.03);
+    }
+
+    .btn-outline:active {
+      transform: scale(0.98);
+    }
+
+    .btn .arrow {
+      display: inline-block;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-outline:hover .arrow {
+      transform: translateX(4px);
+    }
+
+    .hero-media {
+      position: absolute;
+      right: 2.5rem;
+      top: 10%;
+      bottom: 10%;
+      width: 60%;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+      border-radius: 28px;
+      background: #F5F5F0;
+      box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.08);
+    }
+
+    .hero-media .media-wrapper {
+      width: 100%;
+      height: 100%;
+      filter: brightness(1.02) contrast(1.06) saturate(0.9);
+    }
+
+    .hero-media video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .hero-reflection {
+      position: absolute;
+      inset: -60%;
+      background: linear-gradient(
+        105deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.015) 38%,
+        rgba(255, 255, 255, 0.04) 44%,
+        rgba(255, 255, 255, 0.07) 48%,
+        rgba(255, 255, 255, 0.04) 52%,
+        rgba(255, 255, 255, 0.015) 56%,
+        transparent 64%
+      );
+      mix-blend-mode: overlay;
+      pointer-events: none;
+      z-index: 2;
+      animation: reflectionSweep 14s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+    }
+
+    @keyframes reflectionSweep {
+      0% {
+        transform: translateX(-50%) rotate(-4deg);
+      }
+      50% {
+        transform: translateX(50%) rotate(-4deg);
+      }
+      100% {
+        transform: translateX(-50%) rotate(-4deg);
+      }
+    }
+
+    .hero-vignette {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        ellipse 70% 60% at 50% 45%,
+        transparent 35%,
+        rgba(0, 0, 0, 0.015) 65%,
+        rgba(0, 0, 0, 0.04) 100%
+      );
+      pointer-events: none;
+      z-index: 3;
+      border-radius: inherit;
+    }
+
+    .scroll-indicator {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 0 auto;
+      padding-top: 1.5rem;
+    }
+
+    .scroll-indicator .label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.5625rem;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: var(--text-tertiary);
+    }
+
+    .scroll-indicator .line-track {
+      width: 1px;
+      height: 40px;
+      background: var(--border-subtle);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scroll-indicator .line-track .line-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--text-main);
+      animation: scrollPulse 2.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+      transform-origin: top;
+    }
+
+    @keyframes scrollPulse {
+      0% {
+        transform: scaleY(0);
+        opacity: 1;
+      }
+      35% {
+        transform: scaleY(1);
+        opacity: 1;
+      }
+      55% {
+        transform: scaleY(1);
+        opacity: 1;
+      }
+      100% {
+        transform: scaleY(1);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .hero-layout {
+        flex-direction: column;
+        text-align: center;
+        gap: 3rem;
+      }
+
+      .hero-left {
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .hero-text {
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-ctas {
+        justify-content: center;
+      }
+
+      .hero-media {
+        position: relative;
+        top: auto;
+        right: auto;
+        bottom: auto;
+        width: 100%;
+        height: 50vh;
+        margin-top: 1.5rem;
+        border-radius: 24px;
+      }
+
+      .header-nav {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .header {
+        padding: 1rem 1.25rem;
+      }
+
+      .hero {
+        padding: 5rem 1.25rem 2rem;
+      }
+
+      .hero-title .line-solid,
+      .hero-title .line-stroke {
+        font-size: clamp(2rem, 9vw, 2.8rem);
+      }
+
+      .hero-text {
+        font-size: 1rem;
+      }
+
+      .btn {
+        width: 100%;
+        justify-content: center;
+        padding: 0.75rem 1.5rem;
+      }
+
+      .hero-ctas {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .hero-media {
+        position: relative;
+        top: auto;
+        right: auto;
+        bottom: auto;
+        width: 100%;
+        height: 35vh;
+        margin-top: 1rem;
+        border-radius: 20px;
+      }
+
+      .scroll-indicator .line-track {
+        height: 28px;
+      }
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="#" class="header-logo">
+        <div class="logo-icon">✦</div>
+        <span>AURA<span class="logo-light">.pen</span></span>
+      </a>
+
+      <nav class="header-nav" id="mainNav">
+        <a href="#">Produto</a>
+        <a href="#">Tecnologia</a>
+        <a href="#">Design</a>
+      </nav>
+
+      <button class="header-icon" aria-label="Sacola">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <path d="M16 10a4 4 0 0 1-8 0" />
+        </svg>
+      </button>
+
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="hero" id="hero">
+
+    <div class="hero-bg"></div>
+
+    <div class="hero-media" id="heroMedia">
+      <div class="media-wrapper">
+        <video id="heroVideo" muted playsinline autoplay loop preload="auto"
+          poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Crect fill='%23f5f5f0' width='800' height='600'/%3E%3C/svg%3E">
+          <source src="assets/raw_files/video.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="hero-reflection"></div>
+      <div class="hero-vignette"></div>
+    </div>
+
+    <div class="hero-layout">
+      <div class="hero-left">
+        <span class="hero-number" id="heroNumber">01</span>
+
+        <h1 class="hero-title" id="heroTitle">
+          <span class="line-solid">ALÉM DA</span>
+          <span class="line-stroke">PERFEIÇÃO</span>
+        </h1>
+
+        <p class="hero-text" id="heroText">
+          Apresentamos a caneta inteligente que redefine o ato de escrever.
+          Precisão absoluta, design minimalista e tecnologia de ponta em cada traço.
+        </p>
+
+        <div class="hero-ctas" id="heroCtas">
+          <a href="#" class="btn btn-primary">Comprar Agora</a>
+          <a href="#" class="btn btn-outline">
+            <span>Explorar</span>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator" id="scrollIndicator">
+      <span class="label">scroll to control</span>
+      <div class="line-track">
+        <div class="line-fill"></div>
+      </div>
+    </div>
+
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      const lenis = new Lenis({
+        duration: 1.6,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        orientation: 'vertical',
+        smoothWheel: true,
+        touchMultiplier: 2,
+      });
+
+      lenis.on('scroll', ScrollTrigger.update);
+
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+
+      gsap.from('.header', {
+        y: -16,
+        opacity: 0,
+        duration: 0.8,
+        delay: 0.2,
+        ease: 'power3.out',
+      });
+
+      const masterTL = gsap.timeline({ delay: 0.35 });
+
+      masterTL
+        .from('#heroNumber', {
+          opacity: 0,
+          y: 12,
+          duration: 0.8,
+          ease: 'power4.out',
+        })
+        .from('#heroTitle .line-solid', {
+          opacity: 0,
+          y: 28,
+          duration: 1.2,
+          ease: 'power4.out',
+        }, '-=0.35')
+        .from('#heroTitle .line-stroke', {
+          opacity: 0,
+          y: 28,
+          duration: 1.2,
+          ease: 'power4.out',
+        }, '-=0.7')
+        .from('#heroText', {
+          opacity: 0,
+          y: 18,
+          duration: 1.0,
+          ease: 'power4.out',
+        }, '-=0.5')
+        .from('#heroCtas', {
+          opacity: 0,
+          y: 14,
+          duration: 0.9,
+          ease: 'power4.out',
+        }, '-=0.4')
+        .from('#heroMedia', {
+          opacity: 0,
+          scale: 0.98,
+          duration: 1.8,
+          ease: 'power4.out',
+        }, '-=0.7')
+        .from('#scrollIndicator', {
+          opacity: 0,
+          duration: 1.2,
+          ease: 'power4.out',
+        }, '-=0.5');
+
+      const video = document.getElementById('heroVideo');
+      let videoReady = false;
+      let videoDuration = 0;
+
+      video.addEventListener('loadedmetadata', () => {
+        videoDuration = video.duration;
+        videoReady = true;
+      });
+
+      ScrollTrigger.create({
+        trigger: '#hero',
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: 1.5,
+        onUpdate: (self) => {
+          if (videoReady && video.readyState >= 2 && videoDuration > 0) {
+            const p = self.progress;
+            const eased = 1 - Math.pow(1 - p, 1.15);
+            video.currentTime = Math.min(eased * videoDuration, videoDuration - 0.01);
+          }
+        },
+      });
+
+      const parallaxTL = gsap.timeline({
+        scrollTrigger: {
+          trigger: '#hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1.2,
+        },
+      });
+
+      parallaxTL
+        .to('#heroTitle', { y: -15, ease: 'none' }, 0)
+        .to('#heroText', { y: -10, ease: 'none' }, 0)
+        .to('#heroCtas', { y: -8, ease: 'none' }, 0)
+        .to('#heroNumber', { y: -20, opacity: 0.4, ease: 'none' }, 0)
+        .to('#heroMedia', { y: -12, scale: 1.03, ease: 'none' }, 0)
+        .to('#scrollIndicator', { opacity: 0, ease: 'none' }, 0);
+
+      setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 100);
+
+    });
+  </script>
+
+</body>
+</html>
