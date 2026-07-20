@@ -562,6 +562,815 @@
       }
     }
 
+    .tech {
+      position: relative;
+      padding: 8rem 2.5rem 6rem;
+      overflow: hidden;
+    }
+
+    .tech-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        #FAFBFC 0%,
+        #F0F2F5 40%,
+        #E8ECF0 100%
+      );
+      pointer-events: none;
+    }
+
+    .tech-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .tech-header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .tech-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      color: var(--text-tertiary);
+      letter-spacing: 0.25em;
+      display: block;
+      margin-bottom: 1.25rem;
+    }
+
+    .tech-title {
+      margin-bottom: 1.25rem;
+    }
+
+    .tech-title-line {
+      display: block;
+      font-size: clamp(2rem, 4.5vw, 3.5rem);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: var(--text-main);
+    }
+
+    .tech-title-stroke {
+      display: block;
+      font-size: clamp(2rem, 4.5vw, 3.5rem);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(29, 29, 31, 0.2);
+    }
+
+    .tech-sub {
+      max-width: 560px;
+      margin: 0 auto;
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      font-weight: 400;
+      letter-spacing: 0.01em;
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 5rem;
+    }
+
+    .tech-card {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 2rem 1.75rem 2.25rem;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.4s;
+      will-change: transform;
+    }
+
+    .tech-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.08);
+      border-color: var(--border-light);
+    }
+
+    .tech-card-icon {
+      width: 2.75rem;
+      height: 2.75rem;
+      margin-bottom: 1.25rem;
+      color: var(--text-main);
+      opacity: 0.7;
+    }
+
+    .tech-card-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .tech-card-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.625rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .tech-card-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+      color: var(--text-main);
+    }
+
+    .tech-card-text {
+      font-size: 0.875rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      font-weight: 400;
+    }
+
+    .tech-stats {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      padding: 2.5rem 2rem;
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .tech-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .tech-stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text-main);
+      line-height: 1;
+    }
+
+    .tech-stat-value small {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-tertiary);
+      margin-left: 1px;
+    }
+
+    .tech-stat-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.5625rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--text-tertiary);
+    }
+
+    .tech-stat-divider {
+      width: 1px;
+      height: 3rem;
+      background: var(--border-subtle);
+    }
+
+    @media (max-width: 1024px) {
+      .tech {
+        padding: 6rem 1.5rem 4rem;
+      }
+
+      .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .tech-stats {
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        padding: 2rem 1.5rem;
+      }
+
+      .tech-stat-divider:nth-child(4) {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .tech {
+        padding: 4rem 1.25rem 3rem;
+      }
+
+      .tech-header {
+        margin-bottom: 3rem;
+      }
+
+      .tech-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .tech-card {
+        padding: 1.5rem 1.25rem 1.75rem;
+      }
+
+      .tech-stats {
+        flex-direction: column;
+        gap: 1.25rem;
+        padding: 1.5rem;
+      }
+
+      .tech-stat-divider {
+        display: none;
+      }
+    }
+
+    .design {
+      position: relative;
+      padding: 8rem 2.5rem 6rem;
+      overflow: hidden;
+    }
+
+    .design-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        #F8F9FC 0%,
+        #F0F2F8 40%,
+        #E6EAF2 100%
+      );
+      pointer-events: none;
+    }
+
+    .design-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .design-header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .design-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      color: var(--text-tertiary);
+      letter-spacing: 0.25em;
+      display: block;
+      margin-bottom: 1.25rem;
+    }
+
+    .design-title {
+      margin-bottom: 1.25rem;
+    }
+
+    .design-title-line {
+      display: block;
+      font-size: clamp(2rem, 4.5vw, 3.5rem);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: var(--text-main);
+    }
+
+    .design-title-stroke {
+      display: block;
+      font-size: clamp(2rem, 4.5vw, 3.5rem);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(29, 29, 31, 0.2);
+    }
+
+    .design-sub {
+      max-width: 560px;
+      margin: 0 auto;
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      font-weight: 400;
+      letter-spacing: 0.01em;
+    }
+
+    .design-showcase {
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+      margin-bottom: 5rem;
+    }
+
+    .design-showcase-image {
+      flex: 0 0 45%;
+      position: relative;
+      perspective: 1200px;
+    }
+
+    .design-showcase-image .image-frame {
+      position: relative;
+      border-radius: 28px;
+      background:
+        radial-gradient(ellipse 100% 70% at 50% 30%, #0A1628 0%, #060D1A 60%, #02040A 100%);
+      box-shadow:
+        0 24px 64px -16px rgba(0, 0, 0, 0.3),
+        inset 0 0 0 1px rgba(0, 113, 227, 0.15),
+        0 0 40px rgba(0, 113, 227, 0.04);
+      overflow: hidden;
+      aspect-ratio: 4 / 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform-style: preserve-3d;
+    }
+
+    .design-showcase-image .frame-grid {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      opacity: 0.12;
+      background-image:
+        linear-gradient(rgba(0, 113, 227, 0.3) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 113, 227, 0.3) 1px, transparent 1px);
+      background-size: 40px 40px;
+      animation: gridPulse 6s ease-in-out infinite;
+    }
+
+    @keyframes gridPulse {
+      0%, 100% { opacity: 0.08; }
+      50% { opacity: 0.18; }
+    }
+
+    .design-showcase-image .frame-grid-glow {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 35%, rgba(0, 113, 227, 0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 30% 60%, rgba(100, 180, 255, 0.04) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 70% 20%, rgba(0, 200, 255, 0.03) 0%, transparent 60%);
+      animation: ambientGlow 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes ambientGlow {
+      0% { opacity: 0.6; }
+      100% { opacity: 1; }
+    }
+
+    .design-showcase-image .frame-border-glow {
+      position: absolute;
+      inset: -1px;
+      border-radius: 29px;
+      z-index: 6;
+      pointer-events: none;
+      background: linear-gradient(
+        135deg,
+        rgba(0, 113, 227, 0.3) 0%,
+        rgba(0, 200, 255, 0.1) 25%,
+        transparent 40%,
+        rgba(0, 113, 227, 0.05) 55%,
+        rgba(100, 180, 255, 0.15) 75%,
+        rgba(0, 113, 227, 0.2) 100%
+      );
+      animation: borderGlow 6s ease-in-out infinite alternate;
+    }
+
+    @keyframes borderGlow {
+      0% { opacity: 0.4; }
+      50% { opacity: 0.8; }
+      100% { opacity: 0.4; }
+    }
+
+    .design-showcase-image .frame-scan {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      z-index: 5;
+      background: linear-gradient(90deg, transparent 0%, rgba(0, 200, 255, 0.4) 30%, rgba(0, 200, 255, 0.6) 50%, rgba(0, 200, 255, 0.4) 70%, transparent 100%);
+      filter: blur(1px);
+      animation: scanLine 4s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes scanLine {
+      0% { top: -2px; opacity: 0; }
+      5% { opacity: 1; }
+      95% { opacity: 1; }
+      100% { top: 100%; opacity: 0; }
+    }
+
+    .design-showcase-image .image-frame::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        transparent 30%,
+        rgba(0, 200, 255, 0.03) 42%,
+        rgba(0, 150, 255, 0.06) 48%,
+        rgba(0, 200, 255, 0.03) 54%,
+        transparent 65%
+      );
+      pointer-events: none;
+      z-index: 4;
+      animation: futuristicShine 6s ease-in-out infinite;
+    }
+
+    @keyframes futuristicShine {
+      0%, 100% { opacity: 0.2; transform: translateX(-15%) skewX(-8deg); }
+      50% { opacity: 0.6; transform: translateX(15%) skewX(-8deg); }
+    }
+
+    .design-showcase-image .pen-glow {
+      position: absolute;
+      width: 90%;
+      height: 90%;
+      top: 5%;
+      left: 5%;
+      background: radial-gradient(
+        ellipse 50% 60% at 50% 35%,
+        rgba(0, 150, 255, 0.12) 0%,
+        rgba(0, 100, 200, 0.06) 30%,
+        rgba(0, 50, 100, 0.02) 60%,
+        transparent 80%
+      );
+      pointer-events: none;
+      z-index: 1;
+      animation: penAura 4s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+    }
+
+    @keyframes penAura {
+      0%, 100% { opacity: 0.5; transform: scale(0.95); }
+      50% { opacity: 1; transform: scale(1.06); }
+    }
+
+    .design-showcase-image .pen-edge-glow {
+      position: absolute;
+      inset: 5%;
+      z-index: 2;
+      pointer-events: none;
+      border-radius: 40% 60% 50% 50%;
+      background: radial-gradient(
+        ellipse 30% 80% at 50% 35%,
+        rgba(0, 180, 255, 0.08) 0%,
+        transparent 70%
+      );
+      filter: blur(20px);
+      animation: edgeGlow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes edgeGlow {
+      0% { opacity: 0.3; transform: scaleX(0.95); }
+      100% { opacity: 0.8; transform: scaleX(1.05); }
+    }
+
+    .design-showcase-image .pen-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: relative;
+      z-index: 3;
+      filter:
+        drop-shadow(0 0 20px rgba(0, 113, 227, 0.15))
+        drop-shadow(0 0 60px rgba(0, 113, 227, 0.05))
+        brightness(1.05) contrast(1.02);
+      transition: filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform;
+      mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
+    }
+
+    .design-showcase-image:hover .pen-video {
+      filter:
+        drop-shadow(0 0 30px rgba(0, 113, 227, 0.25))
+        drop-shadow(0 0 80px rgba(0, 113, 227, 0.08))
+        brightness(1.08) contrast(1.03);
+    }
+
+    .design-showcase-image .pen-particles {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .design-showcase-image .pen-particles span {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: rgba(0, 200, 255, 0.6);
+      border-radius: 50%;
+      filter: blur(0.5px);
+      animation: particleFloat 8s linear infinite;
+    }
+
+    .design-showcase-image .pen-particles span:nth-child(1) { left: 20%; top: 10%; animation-delay: 0s; animation-duration: 7s; }
+    .design-showcase-image .pen-particles span:nth-child(2) { left: 70%; top: 20%; animation-delay: 1.5s; animation-duration: 9s; }
+    .design-showcase-image .pen-particles span:nth-child(3) { left: 30%; top: 60%; animation-delay: 3s; animation-duration: 6s; }
+    .design-showcase-image .pen-particles span:nth-child(4) { left: 80%; top: 70%; animation-delay: 0.5s; animation-duration: 8s; }
+    .design-showcase-image .pen-particles span:nth-child(5) { left: 50%; top: 15%; animation-delay: 2s; animation-duration: 10s; }
+    .design-showcase-image .pen-particles span:nth-child(6) { left: 10%; top: 80%; animation-delay: 4s; animation-duration: 7s; }
+    .design-showcase-image .pen-particles span:nth-child(7) { left: 60%; top: 50%; animation-delay: 1s; animation-duration: 11s; }
+    .design-showcase-image .pen-particles span:nth-child(8) { left: 40%; top: 35%; animation-delay: 3.5s; animation-duration: 6.5s; }
+
+    @keyframes particleFloat {
+      0% { opacity: 0; transform: translateY(0) scale(0); }
+      20% { opacity: 1; transform: translateY(-20px) scale(1); }
+      80% { opacity: 0.6; transform: translateY(-80px) scale(0.8); }
+      100% { opacity: 0; transform: translateY(-120px) scale(0); }
+    }
+
+    .design-showcase-image .pen-reflection {
+      position: absolute;
+      inset: -60%;
+      background: linear-gradient(
+        105deg,
+        transparent 25%,
+        rgba(0, 150, 255, 0.02) 35%,
+        rgba(0, 200, 255, 0.04) 42%,
+        rgba(0, 150, 255, 0.06) 47%,
+        rgba(0, 200, 255, 0.04) 52%,
+        rgba(0, 150, 255, 0.02) 57%,
+        transparent 68%
+      );
+      mix-blend-mode: screen;
+      pointer-events: none;
+      z-index: 5;
+      animation: futuristicSweep 10s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+    }
+
+    @keyframes futuristicSweep {
+      0% { transform: translateX(-70%) rotate(-3deg); }
+      50% { transform: translateX(70%) rotate(-3deg); }
+      100% { transform: translateX(-70%) rotate(-3deg); }
+    }
+
+    .design-showcase-image .pen-badge {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      background: rgba(6, 13, 26, 0.8);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(0, 113, 227, 0.25);
+      border-radius: 12px;
+      padding: 0.75rem 1rem;
+      z-index: 6;
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(0, 113, 227, 0.1);
+    }
+
+    .design-showcase-image .pen-badge .badge-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: rgba(100, 180, 255, 0.6);
+    }
+
+    .design-showcase-image .pen-badge .badge-value {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: rgba(200, 225, 255, 0.95);
+      letter-spacing: -0.01em;
+    }
+
+    .design-showcase-content {
+      flex: 1;
+    }
+
+    .design-showcase-content .design-block-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.625rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-blue);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .design-showcase-content h3 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      color: var(--text-main);
+    }
+
+    .design-showcase-content p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      max-width: 480px;
+    }
+
+    .design-showcase-content .design-traits {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 2rem;
+    }
+
+    .design-showcase-content .design-trait {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: rgba(255, 255, 255, 0.5);
+      border: 1px solid var(--border-subtle);
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text-main);
+    }
+
+    .design-showcase-content .design-trait .trait-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .design-showcase-content .design-trait .trait-dot.dark {
+      background: #1D1D1F;
+    }
+    .design-showcase-content .design-trait .trait-dot.silver {
+      background: #C0C0C0;
+    }
+    .design-showcase-content .design-trait .trait-dot.gold {
+      background: #D4AF37;
+    }
+    .design-showcase-content .design-trait .trait-dot.blue {
+      background: var(--accent-blue);
+    }
+
+    .design-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+
+    .design-card {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 2rem 1.5rem 2.25rem;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.4s;
+      will-change: transform;
+      text-align: center;
+    }
+
+    .design-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 48px -16px rgba(0, 0, 0, 0.1);
+      border-color: var(--border-light);
+    }
+
+    .design-card-icon {
+      width: 3rem;
+      height: 3rem;
+      margin: 0 auto 1.25rem;
+      color: var(--text-main);
+      opacity: 0.7;
+    }
+
+    .design-card-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .design-card h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      color: var(--text-main);
+    }
+
+    .design-card p {
+      font-size: 0.8125rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+
+    .design-cta {
+      text-align: center;
+      margin-top: 5rem;
+    }
+
+    .design-cta .btn-outline {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+    }
+
+    @media (max-width: 1024px) {
+      .design {
+        padding: 6rem 1.5rem 4rem;
+      }
+
+      .design-showcase {
+        flex-direction: column;
+        gap: 3rem;
+      }
+
+      .design-showcase-image {
+        flex: none;
+        width: 100%;
+        max-width: 500px;
+      }
+
+      .design-showcase-content {
+        text-align: center;
+      }
+
+      .design-showcase-content p {
+        max-width: 100%;
+        margin: 0 auto;
+      }
+
+      .design-showcase-content .design-traits {
+        justify-content: center;
+      }
+
+      .design-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .design {
+        padding: 4rem 1.25rem 3rem;
+      }
+
+      .design-header {
+        margin-bottom: 3rem;
+      }
+
+      .design-showcase {
+        gap: 2rem;
+      }
+
+      .design-showcase-image .image-frame {
+        aspect-ratio: 3 / 4;
+      }
+
+      .design-showcase-image .pen-video {
+        width: 100%;
+      }
+
+      .design-showcase-image .frame-grid {
+        background-size: 30px 30px;
+      }
+
+      .design-showcase-content h3 {
+        font-size: 1.375rem;
+      }
+
+      .design-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .design-card {
+        padding: 1.5rem 1.25rem 1.75rem;
+      }
+
+      .design-cta {
+        margin-top: 3rem;
+      }
+    }
+
     .sr-only {
       position: absolute;
       width: 1px;
@@ -649,6 +1458,309 @@
       </div>
     </div>
 
+  </section>
+
+  <section class="tech" id="tech">
+
+    <div class="tech-bg"></div>
+
+    <div class="tech-inner">
+
+      <div class="tech-header">
+        <span class="tech-number">02</span>
+        <h2 class="tech-title">
+          <span class="tech-title-line">TECNOLOGIA</span>
+          <span class="tech-title-stroke">QUE TRANSFORMA</span>
+        </h2>
+        <p class="tech-sub">
+          Cada componente é milimetricamente projetado para oferecer uma
+          experiência de escrita que desafia os limites do que é possível.
+        </p>
+      </div>
+
+      <div class="tech-grid">
+
+        <div class="tech-card">
+          <div class="tech-card-icon">
+            <svg viewBox="0 0 40 40" fill="none">
+              <circle cx="20" cy="20" r="19" stroke="currentColor" stroke-width="0.5"/>
+              <path d="M20 8 L28 16 L20 14 L12 16 Z" fill="currentColor" opacity="0.3"/>
+              <circle cx="20" cy="20" r="4" fill="currentColor"/>
+              <path d="M20 24 L20 32" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="tech-card-label">ENGENHARIA SUÍÇA</div>
+          <h3 class="tech-card-title">Precisão Helvética</h3>
+          <p class="tech-card-text">
+            Manufaturado nos Alpes suíços com tolerância de micron. Cada
+            engrenagem, cada eixo, cada junta segue padrão milimétrico —
+            a mesma precisão que move a relojoaria mais nobre do mundo.
+          </p>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-card-icon">
+            <svg viewBox="0 0 40 40" fill="none">
+              <rect x="8" y="6" width="24" height="28" rx="3" stroke="currentColor" stroke-width="0.5" fill="none"/>
+              <line x1="14" y1="12" x2="26" y2="12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              <line x1="14" y1="17" x2="26" y2="17" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              <line x1="14" y1="22" x2="22" y2="22" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              <circle cx="26" cy="27" r="3" stroke="currentColor" stroke-width="0.5" fill="none"/>
+              <circle cx="26" cy="27" r="1.5" fill="currentColor" opacity="0.5"/>
+            </svg>
+          </div>
+          <div class="tech-card-label">ALUMÍNIO AEROESPACIAL</div>
+          <h3 class="tech-card-title">Liga 6061-T6</h3>
+          <p class="tech-card-text">
+            Corpo usinado em bloco sólido de alumínio aeronáutico 6061-T6.
+            A mesma liga utilizada em fuselagens e satélites. Pesa 18g —
+            mais leve que uma folha de papel A4.
+          </p>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-card-icon">
+            <svg viewBox="0 0 40 40" fill="none">
+              <polygon points="20,6 34,16 34,28 20,34 6,28 6,16" stroke="currentColor" stroke-width="0.5" fill="none"/>
+              <circle cx="20" cy="20" r="6" stroke="currentColor" stroke-width="0.5" fill="none"/>
+              <line x1="20" y1="14" x2="20" y2="8" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+              <line x1="20" y1="26" x2="20" y2="32" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="tech-card-label">PONTA DE TUNGSTÊNIO</div>
+          <h3 class="tech-card-title">Dureza Extrema</h3>
+          <p class="tech-card-text">
+            Esfera de碳eto de tungstênio com 0.5mm. 10x mais resistente que o
+            aço tradicional. Testada para 25 km de escrita contínua sem perder
+            um único micrômetro de sua geometria original.
+          </p>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-card-icon">
+            <svg viewBox="0 0 40 40" fill="none">
+              <circle cx="20" cy="20" r="12" stroke="currentColor" stroke-width="0.5" fill="none"/>
+              <path d="M12 20 Q16 12 20 20 Q24 28 28 20" stroke="currentColor" stroke-width="1.2" fill="none"/>
+              <circle cx="14" cy="26" r="2" fill="currentColor" opacity="0.2"/>
+              <circle cx="26" cy="14" r="2" fill="currentColor" opacity="0.2"/>
+            </svg>
+          </div>
+          <div class="tech-card-label">SENSOR 4096 NÍVEIS</div>
+          <h3 class="tech-card-title">Pressão Quântica</h3>
+          <p class="tech-card-text">
+            4096 níveis de sensibilidade à pressão. O sensor capacitivo lê
+            microvariações de 0.01N — do traço mais etéreo ao mais denso.
+            A latência é de 8ms: imperceptível ao cérebro humano.
+          </p>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-card-icon">
+            <svg viewBox="0 0 40 40" fill="none">
+              <rect x="8" y="12" width="24" height="16" rx="4" stroke="currentColor" stroke-width="0.5" fill="none"/>
+              <path d="M20 12 L20 20 L26 20" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="16" cy="28" r="1.5" fill="currentColor" opacity="0.3"/>
+              <circle cx="24" cy="28" r="1.5" fill="currentColor" opacity="0.3"/>
+            </svg>
+          </div>
+          <div class="tech-card-label">NANO-REVESTIMENTO</div>
+          <h3 class="tech-card-title">Camada Cerâmica</h3>
+          <p class="tech-card-text">
+            Revestimento nano-cerâmico hidrofóbico que repele líquidos,
+            óleo digital e suor. O corpo da caneta permanece imaculado —
+            mesmo após horas de uso contínuo. Teste de névoa salina: 240h.
+          </p>
+        </div>
+
+        <div class="tech-card">
+          <div class="tech-card-icon">
+            <svg viewBox="0 0 40 40" fill="none">
+              <circle cx="20" cy="20" r="14" stroke="currentColor" stroke-width="0.5" fill="none"/>
+              <circle cx="20" cy="20" r="6" stroke="currentColor" stroke-width="0.5" fill="none"/>
+              <circle cx="20" cy="20" r="2" fill="currentColor" opacity="0.6"/>
+              <line x1="20" y1="6" x2="20" y2="10" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+              <line x1="20" y1="30" x2="20" y2="34" stroke="currentColor" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+            </svg>
+          </div>
+          <div class="tech-card-label">CONECTIVIDADE QUÂNTICA</div>
+          <h3 class="tech-card-title">Sincronização Imediata</h3>
+          <p class="tech-card-text">
+            Bluetooth 5.4 LE com emparelhamento instantâneo. Sincroniza com
+            até 6 dispositivos simultaneamente. A bateria de 350mAh oferece
+            120h de uso contínuo com recarga magnética em 22 minutos.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="tech-stats">
+        <div class="tech-stat">
+          <span class="tech-stat-value">18<small>g</small></span>
+          <span class="tech-stat-label">Peso total</span>
+        </div>
+        <div class="tech-stat-divider"></div>
+        <div class="tech-stat">
+          <span class="tech-stat-value">0.5<small>mm</small></span>
+          <span class="tech-stat-label">Ponta precisão</span>
+        </div>
+        <div class="tech-stat-divider"></div>
+        <div class="tech-stat">
+          <span class="tech-stat-value">8<small>ms</small></span>
+          <span class="tech-stat-label">Latência</span>
+        </div>
+        <div class="tech-stat-divider"></div>
+        <div class="tech-stat">
+          <span class="tech-stat-value">120<small>h</small></span>
+          <span class="tech-stat-label">Bateria</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="design" id="design">
+
+    <div class="design-bg"></div>
+
+    <div class="design-inner">
+
+      <div class="design-header">
+        <span class="design-number">03</span>
+        <h2 class="design-title">
+          <span class="design-title-line">DESIGN</span>
+          <span class="design-title-stroke">QUE INSPIRA</span>
+        </h2>
+        <p class="design-sub">
+          Cada curva, cada material, cada detalhe existe por uma razão. O design
+          da AURA é o ponto onde a estética encontra a função com propósito.
+        </p>
+      </div>
+
+      <div class="design-showcase">
+        <div class="design-showcase-image" id="penImage">
+          <div class="image-frame">
+            <div class="frame-grid"></div>
+            <div class="frame-grid-glow"></div>
+            <div class="pen-glow"></div>
+            <div class="pen-edge-glow"></div>
+            <div class="frame-border-glow"></div>
+            <div class="frame-scan"></div>
+            <video
+              class="pen-video"
+              autoplay muted loop playsinline
+              poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='600'%3E%3Crect fill='%230A1628' width='400' height='600'/%3E%3C/svg%3E"
+            >
+              <source src="assets/ANIMA TERCEIRA DOBRA.mp4" type="video/mp4" />
+            </video>
+            <div class="pen-particles">
+              <span></span><span></span><span></span>
+              <span></span><span></span><span></span>
+              <span></span><span></span>
+            </div>
+            <div class="pen-reflection"></div>
+            <div class="pen-badge">
+              <span class="badge-label">Material</span>
+              <span class="badge-value">Alumínio 6061-T6</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="design-showcase-content">
+          <span class="design-block-label">FILOSOFIA DE DESIGN</span>
+          <h3>Menos é mais. Muito mais.</h3>
+          <p>
+            Inspirado na arquitetura brutalista e na relojoaria suíça, cada
+            milímetro da AURA foi projetado para eliminar o supérfluo. O que
+            resta é pura função — e uma beleza que emerge da honestidade
+            dos materiais.
+          </p>
+          <div class="design-traits">
+            <span class="design-trait"><span class="trait-dot dark"></span> Space Black</span>
+            <span class="design-trait"><span class="trait-dot silver"></span> Silver Steel</span>
+            <span class="design-trait"><span class="trait-dot gold"></span> Rose Gold</span>
+            <span class="design-trait"><span class="trait-dot blue"></span> Deep Blue</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="design-grid">
+
+        <div class="design-card">
+          <div class="design-card-icon">
+            <svg viewBox="0 0 40 40" fill="none">
+              <path d="M20 4 L28 10 L20 16 L12 10 Z" stroke="currentColor" stroke-width="0.5" fill="none"/>
+              <path d="M20 16 L28 22 L20 28 L12 22 Z" stroke="currentColor" stroke-width="0.5" fill="none"/>
+              <path d="M20 28 L28 34 L20 40 L12 34 Z" stroke="currentColor" stroke-width="0.5" fill="none"/>
+              <circle cx="20" cy="10" r="2" fill="currentColor" opacity="0.4"/>
+              <circle cx="20" cy="22" r="2" fill="currentColor" opacity="0.4"/>
+              <circle cx="20" cy="34" r="2" fill="currentColor" opacity="0.4"/>
+            </svg>
+          </div>
+          <h4>Simetria Perfeita</h4>
+          <p>
+            Proporção áurea aplicada em cada curva. O equilíbrio visual é
+            calculado matematicamente para uma estética atemporal.
+          </p>
+        </div>
+
+        <div class="design-card">
+          <div class="design-card-icon">
+            <svg viewBox="0 0 40 40" fill="none">
+              <circle cx="20" cy="20" r="12" stroke="currentColor" stroke-width="0.5" fill="none"/>
+              <path d="M12 20 L20 20 L20 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="20" cy="20" r="2" fill="currentColor" opacity="0.5"/>
+              <path d="M8 8 L14 14" stroke="currentColor" stroke-width="0.5" stroke-linecap="round" opacity="0.3"/>
+              <path d="M26 26 L32 32" stroke="currentColor" stroke-width="0.5" stroke-linecap="round" opacity="0.3"/>
+            </svg>
+          </div>
+          <h4>Ergonomia Ativa</h4>
+          <p>
+            Distribuição precisa de massa para escrita sem fadiga. O centro
+            de gravidade ideal para fluxo criativo ininterrupto.
+          </p>
+        </div>
+
+        <div class="design-card">
+          <div class="design-card-icon">
+            <svg viewBox="0 0 40 40" fill="none">
+              <rect x="6" y="10" width="28" height="20" rx="4" stroke="currentColor" stroke-width="0.5" fill="none"/>
+              <path d="M10 16 L18 24 L30 14" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="14" cy="26" r="1.5" fill="currentColor" opacity="0.3"/>
+              <circle cx="26" cy="18" r="1.5" fill="currentColor" opacity="0.3"/>
+            </svg>
+          </div>
+          <h4>Acabamento Espelhado</h4>
+          <p>
+            Polimento manual em 12 estágios. Superfície com refletância
+            de 92% — comparável a instrumentos óticos de precisão.
+          </p>
+        </div>
+
+        <div class="design-card">
+          <div class="design-card-icon">
+            <svg viewBox="0 0 40 40" fill="none">
+              <path d="M20 6 C24 6 28 10 28 14 C28 20 20 22 20 28 C20 22 12 20 12 14 C12 10 16 6 20 6Z" stroke="currentColor" stroke-width="0.5" fill="none"/>
+              <path d="M20 30 L20 34" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+              <path d="M12 34 L28 34" stroke="currentColor" stroke-width="0.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h4>Sustentabilidade</h4>
+          <p>
+            Manufatura neutra em carbono. Embalagem 100% reciclável e
+            materiais de origem responsável certificada.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="design-cta">
+        <a href="#" class="btn btn-outline">
+          <span>Ver mais detalhes</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+
+    </div>
   </section>
 
   <script>
@@ -761,6 +1873,279 @@
         .to('#heroNumber', { y: -20, opacity: 0.4, ease: 'none' }, 0)
         .to('#heroMedia', { y: -12, scale: 1.03, ease: 'none' }, 0)
         .to('#scrollIndicator', { opacity: 0, ease: 'none' }, 0);
+
+      const techCards = gsap.utils.toArray('.tech-card');
+      techCards.forEach((card, i) => {
+        gsap.from(card, {
+          opacity: 0,
+          y: 40,
+          duration: 0.9,
+          ease: 'power4.out',
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse',
+          },
+          delay: i * 0.08,
+        });
+      });
+
+      gsap.from('.tech-header', {
+        opacity: 0,
+        y: 30,
+        duration: 1.2,
+        ease: 'power4.out',
+        scrollTrigger: {
+          trigger: '.tech-header',
+          start: 'top 88%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+
+      gsap.from('.tech-stats', {
+        opacity: 0,
+        y: 24,
+        duration: 1.0,
+        ease: 'power4.out',
+        scrollTrigger: {
+          trigger: '.tech-stats',
+          start: 'top 88%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+
+      gsap.from('.tech-stat', {
+        opacity: 0,
+        y: 16,
+        duration: 0.7,
+        ease: 'power4.out',
+        scrollTrigger: {
+          trigger: '.tech-stats',
+          start: 'top 85%',
+          toggleActions: 'play none none reverse',
+        },
+        stagger: 0.12,
+      });
+
+      gsap.from('.design-header', {
+        opacity: 0,
+        y: 30,
+        duration: 1.2,
+        ease: 'power4.out',
+        scrollTrigger: {
+          trigger: '.design-header',
+          start: 'top 88%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+
+      const penTL = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.design-showcase',
+          start: 'top 88%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+
+      penTL
+        .set('.image-frame', { transformPerspective: 1200 })
+        .from('.image-frame', {
+          opacity: 0,
+          scale: 0.85,
+          rotationY: 15,
+          duration: 1.6,
+          ease: 'power4.out',
+        })
+        .from('.pen-video', {
+          scale: 1.6,
+          opacity: 0,
+          duration: 1.8,
+          ease: 'power4.out',
+        }, '-=1.0')
+        .from('.pen-glow', {
+          opacity: 0,
+          scale: 0.3,
+          duration: 1.2,
+          ease: 'power2.out',
+        }, '-=0.8')
+        .from('.frame-grid, .frame-grid-glow', {
+          opacity: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+        }, '-=0.6')
+        .from('.frame-border-glow', {
+          opacity: 0,
+          duration: 0.6,
+          ease: 'power2.out',
+        }, '-=0.3')
+        .from('.pen-badge', {
+          opacity: 0,
+          y: 20,
+          duration: 0.8,
+          ease: 'power4.out',
+        }, '-=0.2');
+
+      gsap.to('.design-showcase-image', {
+        y: -30,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.design-showcase',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1.5,
+        },
+      });
+
+      gsap.to('.image-frame', {
+        rotationY: 6,
+        rotationX: -3,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.design-showcase',
+          start: 'top bottom',
+          end: 'center center',
+          scrub: 1.2,
+        },
+      });
+
+      gsap.to('.image-frame', {
+        rotationY: -6,
+        rotationX: 3,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.design-showcase',
+          start: 'center center',
+          end: 'bottom top',
+          scrub: 1.2,
+        },
+      });
+
+      gsap.from('.design-showcase-content', {
+        opacity: 0,
+        x: 50,
+        duration: 1.2,
+        ease: 'power4.out',
+        scrollTrigger: {
+          trigger: '.design-showcase',
+          start: 'top 82%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+
+      gsap.from('.design-traits .design-trait', {
+        opacity: 0,
+        y: 12,
+        duration: 0.6,
+        ease: 'power4.out',
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: '.design-showcase',
+          start: 'top 78%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+
+      const designCards = gsap.utils.toArray('.design-card');
+      designCards.forEach((card, i) => {
+        gsap.from(card, {
+          opacity: 0,
+          y: 40,
+          scale: 0.95,
+          duration: 0.9,
+          ease: 'power4.out',
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse',
+          },
+          delay: i * 0.1,
+        });
+      });
+
+      gsap.from('.design-cta', {
+        opacity: 0,
+        y: 20,
+        duration: 1.0,
+        ease: 'power4.out',
+        scrollTrigger: {
+          trigger: '.design-cta',
+          start: 'top 90%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+
+      gsap.to('.design-card-icon', {
+        rotation: (i) => i % 2 === 0 ? 5 : -5,
+        duration: 0.6,
+        ease: 'power1.inOut',
+        scrollTrigger: {
+          trigger: '.design-grid',
+          start: 'top 70%',
+          toggleActions: 'play none none reverse',
+        },
+        stagger: 0.08,
+        yoyo: true,
+        repeat: -1,
+      });
+
+      const penFrame = document.querySelector('.design-showcase-image');
+      const frame = penFrame?.querySelector('.image-frame');
+      if (penFrame && frame) {
+        penFrame.addEventListener('mousemove', (e) => {
+          const rect = penFrame.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - 0.5;
+          const y = (e.clientY - rect.top) / rect.height - 0.5;
+          gsap.to(frame, {
+            rotationY: x * 10,
+            rotationX: -y * 8,
+            transformPerspective: 1200,
+            duration: 0.8,
+            ease: 'power2.out',
+          });
+          gsap.to(frame.querySelector('.pen-video'), {
+            x: x * 8,
+            y: -y * 6,
+            duration: 0.8,
+            ease: 'power2.out',
+          });
+          gsap.to(frame.querySelector('.pen-glow'), {
+            x: x * 12,
+            y: -y * 10,
+            duration: 1.0,
+            ease: 'power2.out',
+          });
+          gsap.to(frame.querySelector('.frame-grid'), {
+            backgroundPositionX: `${x * -12}px`,
+            backgroundPositionY: `${y * -12}px`,
+            duration: 0.8,
+            ease: 'power2.out',
+          });
+        });
+        penFrame.addEventListener('mouseleave', () => {
+          gsap.to(frame, {
+            rotationY: 0,
+            rotationX: 0,
+            duration: 1.2,
+            ease: 'power4.out',
+          });
+          gsap.to(frame.querySelector('.pen-video'), {
+            x: 0, y: 0,
+            duration: 1.2,
+            ease: 'power4.out',
+          });
+          gsap.to(frame.querySelector('.pen-glow'), {
+            x: 0, y: 0,
+            duration: 1.2,
+            ease: 'power4.out',
+          });
+          gsap.to(frame.querySelector('.frame-grid'), {
+            backgroundPositionX: '0px',
+            backgroundPositionY: '0px',
+            duration: 1.2,
+            ease: 'power4.out',
+          });
+        });
+      }
 
       setTimeout(() => {
         ScrollTrigger.refresh();
