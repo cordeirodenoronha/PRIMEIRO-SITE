@@ -1371,6 +1371,282 @@
       }
     }
 
+    .enterprise {
+      position: relative;
+      padding: 8rem 2.5rem 6rem;
+      overflow: hidden;
+    }
+
+    .enterprise-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80')
+        center / cover no-repeat;
+      pointer-events: none;
+      will-change: transform;
+    }
+
+    .enterprise-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(10, 22, 40, 0.85) 0%,
+          rgba(6, 13, 26, 0.75) 50%,
+          rgba(2, 4, 10, 0.9) 100%
+        );
+      pointer-events: none;
+    }
+
+    .enterprise-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .enterprise-header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .enterprise-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.35);
+      letter-spacing: 0.25em;
+      display: block;
+      margin-bottom: 1.25rem;
+    }
+
+    .enterprise-title {
+      margin-bottom: 1.25rem;
+    }
+
+    .enterprise-title-line {
+      display: block;
+      font-size: clamp(2rem, 4.5vw, 3.5rem);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: #FFFFFF;
+    }
+
+    .enterprise-title-stroke {
+      display: block;
+      font-size: clamp(2rem, 4.5vw, 3.5rem);
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255, 255, 255, 0.25);
+    }
+
+    .enterprise-sub {
+      max-width: 560px;
+      margin: 0 auto;
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.55);
+      font-weight: 400;
+      letter-spacing: 0.01em;
+    }
+
+    .enterprise-showcase {
+      display: flex;
+      justify-content: center;
+    }
+
+    .enterprise-highlight {
+      position: relative;
+      max-width: 720px;
+      width: 100%;
+      border-radius: 28px;
+      background: rgba(6, 13, 26, 0.7);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(0, 113, 227, 0.25);
+      padding: 3rem 3rem 3.5rem;
+      overflow: hidden;
+    }
+
+    .enterprise-highlight::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 30px;
+      background: linear-gradient(
+        135deg,
+        rgba(0, 113, 227, 0.4) 0%,
+        rgba(0, 200, 255, 0.15) 30%,
+        transparent 50%,
+        rgba(0, 113, 227, 0.1) 70%,
+        rgba(100, 180, 255, 0.25) 100%
+      );
+      z-index: -1;
+      animation: enterpriseBorderGlow 4s ease-in-out infinite alternate;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      -webkit-mask-composite: xor;
+      padding: 2px;
+    }
+
+    @keyframes enterpriseBorderGlow {
+      0% { opacity: 0.5; }
+      50% { opacity: 1; }
+      100% { opacity: 0.5; }
+    }
+
+    .enterprise-highlight::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 28px;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 30%, rgba(0, 113, 227, 0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 80% 70%, rgba(0, 200, 255, 0.03) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+      animation: enterpriseGlowPulse 6s ease-in-out infinite alternate;
+    }
+
+    @keyframes enterpriseGlowPulse {
+      0% { opacity: 0.6; }
+      100% { opacity: 1; }
+    }
+
+    .highlight-glow {
+      position: absolute;
+      top: -30%;
+      left: -20%;
+      width: 140%;
+      height: 140%;
+      background: radial-gradient(
+        ellipse 50% 40% at 50% 50%,
+        rgba(0, 113, 227, 0.08) 0%,
+        transparent 70%
+      );
+      pointer-events: none;
+      z-index: 0;
+      animation: highlightAura 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes highlightAura {
+      0% { transform: translate(-5%, -5%) scale(1); opacity: 0.5; }
+      50% { transform: translate(5%, 5%) scale(1.1); opacity: 0.8; }
+      100% { transform: translate(-5%, -5%) scale(1); opacity: 0.5; }
+    }
+
+    .highlight-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .highlight-badge {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.5625rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(100, 200, 255, 0.8);
+      background: rgba(0, 113, 227, 0.12);
+      border: 1px solid rgba(0, 113, 227, 0.2);
+      border-radius: 9999px;
+      padding: 0.35rem 0.85rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .highlight-content h3 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.25;
+      color: #FFFFFF;
+      margin-bottom: 1rem;
+    }
+
+    .highlight-content p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.6);
+      max-width: 540px;
+      margin-bottom: 2.5rem;
+    }
+
+    .highlight-stats {
+      display: flex;
+      gap: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .hstat {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .hstat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: #FFFFFF;
+      line-height: 1;
+    }
+
+    .hstat-value small {
+      font-size: 1rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.3);
+    }
+
+    .hstat-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.5625rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: rgba(255, 255, 255, 0.35);
+    }
+
+    @media (max-width: 1024px) {
+      .enterprise {
+        padding: 6rem 1.5rem 4rem;
+      }
+
+      .enterprise-highlight {
+        padding: 2.5rem 2rem 3rem;
+      }
+
+      .highlight-stats {
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .enterprise {
+        padding: 4rem 1.25rem 3rem;
+      }
+
+      .enterprise-header {
+        margin-bottom: 3rem;
+      }
+
+      .enterprise-highlight {
+        padding: 2rem 1.5rem 2.5rem;
+      }
+
+      .highlight-stats {
+        flex-direction: column;
+        gap: 1.25rem;
+      }
+    }
+
     .sr-only {
       position: absolute;
       width: 1px;
@@ -1763,6 +2039,60 @@
     </div>
   </section>
 
+  <section class="enterprise" id="enterprise">
+
+    <div class="enterprise-bg" id="enterpriseBg"></div>
+    <div class="enterprise-overlay"></div>
+
+    <div class="enterprise-inner">
+
+      <div class="enterprise-header">
+        <span class="enterprise-number">04</span>
+        <h2 class="enterprise-title">
+          <span class="enterprise-title-line">PRESENÇA</span>
+          <span class="enterprise-title-stroke">GLOBAL</span>
+        </h2>
+        <p class="enterprise-sub">
+          Da startup ao enterprise, a AURA está presente nos maiores escritórios
+          e nas mesas dos líderes mais exigentes do mundo.
+        </p>
+      </div>
+
+      <div class="enterprise-showcase">
+
+        <div class="enterprise-highlight">
+          <div class="highlight-glow"></div>
+          <div class="highlight-content">
+            <span class="highlight-badge">★ DESTAQUE CORPORATIVO</span>
+            <h3>A caneta oficial das 5 maiores consultorias globais</h3>
+            <p>
+              Mais de <strong style="color:#fff;">500 corporações</strong> ao redor do mundo
+              escolheram a AURA como instrumento de escrita oficial. Da assinatura de
+              contratos multilaterais às reuniões de board, a precisão da AURA é reconhecida
+              onde cada detalhe importa — e cada traço deixa uma marca.
+            </p>
+            <div class="highlight-stats">
+              <div class="hstat">
+                <span class="hstat-value">500<small>+</small></span>
+                <span class="hstat-label">Empresas</span>
+              </div>
+              <div class="hstat">
+                <span class="hstat-value">40<small>+</small></span>
+                <span class="hstat-label">Países</span>
+              </div>
+              <div class="hstat">
+                <span class="hstat-value">99.7<small>%</small></span>
+                <span class="hstat-label">Satisfação</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
   <script>
     document.addEventListener('DOMContentLoaded', () => {
 
@@ -1951,8 +2281,9 @@
         .set('.image-frame', { transformPerspective: 1200 })
         .from('.image-frame', {
           opacity: 0,
-          scale: 0.85,
+          scale: 0.70,
           rotationY: 15,
+          z: -80,
           duration: 1.6,
           ease: 'power4.out',
         })
@@ -2086,6 +2417,55 @@
         stagger: 0.08,
         yoyo: true,
         repeat: -1,
+      });
+
+      gsap.from('.enterprise-header', {
+        opacity: 0,
+        y: 30,
+        duration: 1.2,
+        ease: 'power4.out',
+        scrollTrigger: {
+          trigger: '.enterprise-header',
+          start: 'top 88%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+
+      gsap.from('.enterprise-highlight', {
+        opacity: 0,
+        scale: 0.9,
+        y: 40,
+        duration: 1.4,
+        ease: 'power4.out',
+        scrollTrigger: {
+          trigger: '.enterprise-highlight',
+          start: 'top 85%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+
+      gsap.from('.hstat', {
+        opacity: 0,
+        y: 20,
+        duration: 0.8,
+        ease: 'power4.out',
+        stagger: 0.12,
+        scrollTrigger: {
+          trigger: '.highlight-stats',
+          start: 'top 88%',
+          toggleActions: 'play none none reverse',
+        },
+      });
+
+      gsap.to('.enterprise-bg', {
+        y: -40,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.enterprise',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1.5,
+        },
       });
 
       const penFrame = document.querySelector('.design-showcase-image');
